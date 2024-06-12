@@ -6,7 +6,7 @@
 /*   By: kammi <kammi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 13:28:30 by kammi             #+#    #+#             */
-/*   Updated: 2024/06/07 13:50:37 by kammi            ###   ########.fr       */
+/*   Updated: 2024/06/12 17:24:12 by kammi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	check_args(int ac, char **av)
 	while (i < ac)
 	{
 		j = 0;
+		if (av[i][j] == '+')
+			j++;
 		while (av[i][j])
 		{
 			if (!ft_isdigit(av[i][j]))
@@ -53,8 +55,9 @@ int	parser(int ac, char **av, t_table *table)
 		table->nbr_must_eat = ft_atoi(av[5]);
 	else
 		table->nbr_must_eat = 0;
-	if (table->nbr_philos < 2 || table->time_to_die < 60 || table->time_to_eat < 60
-		|| table->time_to_sleep < 60 || (ac == 6 && table->nbr_must_eat < 1))
+	if (table->nbr_philos < 1 || table->time_to_die < 60
+		|| table->time_to_eat < 60 || table->time_to_sleep < 60
+		|| (ac == 6 && table->nbr_must_eat < 1))
 	{
 		ft_putstr_fd("Error: wrong arguments\n", 2);
 		return (1);

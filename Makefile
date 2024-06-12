@@ -6,7 +6,7 @@
 #    By: kammi <kammi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/05 17:13:23 by kammi             #+#    #+#              #
-#    Updated: 2024/06/06 17:43:14 by kammi            ###   ########.fr        #
+#    Updated: 2024/06/12 16:22:55 by kammi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRCS = srcs/main.c\
 		srcs/libft.c\
 		srcs/utils.c\
 		srcs/init.c\
+		srcs/death.c\
 
 OBJS = $(SRCS:.c=.o)
 

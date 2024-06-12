@@ -6,7 +6,7 @@
 /*   By: kammi <kammi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:15:17 by kammi             #+#    #+#             */
-/*   Updated: 2024/06/07 17:41:27 by kammi            ###   ########.fr       */
+/*   Updated: 2024/06/12 17:45:31 by kammi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 typedef struct s_philo	t_philo;
 typedef struct s_table	t_table;
 
-typedef struct					s_table
+typedef struct s_table
 {
 	t_philo				*philos;
 	pthread_t			death_thread;
@@ -83,27 +83,27 @@ void	ft_putstr_fd(char *s, int fd);
 
 /*******************************INIT************************************/
 int		init_table(t_table *table);
-void	forks_init(t_philo *philo, size_t i);
-int	init_mutex(t_table *table);
-
+void	philo_forks_init(t_philo *philo, size_t i);
+int		init_forks(t_table *table);
+int		init_philos(t_table *table);
+int		init_mutex(t_table *table);
 
 /*******************************PARSER************************************/
-int	parser(int ac, char **av, t_table *table);
-int	check_args(int ac, char **av);
-
-
+int		parser(int ac, char **av, t_table *table);
+int		check_args(int ac, char **av);
 
 /*******************************PHILO************************************/
-int	start_simulation(t_table *table);
+int		start_simulation(t_table *table);
 void	*philo_routine(void *arg);
-void		eating(t_philo *philo);
-void		sleeping(t_philo *philo);
-void		thinking(t_philo *philo);
+void	eating(t_philo *philo);
+void	sleeping(t_philo *philo);
+void	thinking(t_philo *philo);
 
 void	set_death(t_table *table);
+int		death(t_table *table);
 int		handle_end(t_table *table);
 void	*death_monitor(void *arg);
-int	check_death(t_philo *philo);
+int		check_death(t_philo *philo);
 
 /********************************UTILS************************************/
 
@@ -111,7 +111,5 @@ size_t	get_time(void);
 void	ft_usleep(size_t time, t_table *table);
 void	print_msg(t_philo *philo, int msg);
 void	cleaning(t_table *table);
-void	free_philos(t_table *table);
-
 
 #endif

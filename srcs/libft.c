@@ -6,11 +6,11 @@
 /*   By: kammi <kammi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:14:32 by kammi             #+#    #+#             */
-/*   Updated: 2024/06/07 13:50:05 by kammi            ###   ########.fr       */
+/*   Updated: 2024/06/12 17:20:39 by kammi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/philo.h"
+#include "../includes/philo.h"
 
 /*******************************ft_atoi************************************/
 int	ft_atoi(const char *str)
@@ -39,7 +39,7 @@ int	ft_atoi(const char *str)
 	return (nb * sign);
 }
 
-/*******************************ft_isdigit************************************/
+/*******************************ft_isdigit**********************************/
 int	ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')
@@ -58,14 +58,10 @@ size_t	ft_strlen(const char *s)
 		i++;
 	return (i);
 }
-/*******************************ft_putstr_fd************************************/
+/*******************************ft_putstr_fd*********************************/
 
 void	ft_putstr_fd(char *s, int fd)
 {
 	if (s)
 		write(fd, s, ft_strlen(s));
 }
-
-
-
-
