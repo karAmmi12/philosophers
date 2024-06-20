@@ -6,7 +6,7 @@
 /*   By: kammi <kammi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 13:58:03 by kammi             #+#    #+#             */
-/*   Updated: 2024/06/12 17:49:35 by kammi            ###   ########.fr       */
+/*   Updated: 2024/06/20 12:43:01 by kammi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	init_mutex(t_table *table)
 		return (1);
 	if (pthread_mutex_init(&table->m_last_meal, NULL))
 		return (1);
+	//if (pthread_mutex_init(&table->m_ready, NULL))
+		//return (1);
 	return (0);
 }
 
@@ -91,6 +93,7 @@ int	init_table(t_table *table)
 	if (init_philos(table) || init_forks(table))
 		return (1);
 	table->dead = 0;
+	//table->ready_count = 0;
 	return (0);
 }
 // int	init_table(t_table *table)

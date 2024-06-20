@@ -6,7 +6,7 @@
 /*   By: kammi <kammi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 17:33:05 by kammi             #+#    #+#             */
-/*   Updated: 2024/06/12 17:30:40 by kammi            ###   ########.fr       */
+/*   Updated: 2024/06/20 12:43:49 by kammi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	cleaning(t_table *table)
 	pthread_mutex_destroy(&table->m_count_meal);
 	pthread_mutex_destroy(&table->m_print);
 	pthread_mutex_destroy(&table->m_last_meal);
+	//pthread_mutex_destroy(&table->m_ready);
 }
 
 void	print_msg(t_philo *philo, int msg)

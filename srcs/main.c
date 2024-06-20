@@ -6,20 +6,30 @@
 /*   By: kammi <kammi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:16:33 by kammi             #+#    #+#             */
-/*   Updated: 2024/06/12 17:22:12 by kammi            ###   ########.fr       */
+/*   Updated: 2024/06/20 12:59:00 by kammi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
+
+void	wait_all_philos(size_t time_start)
+{
+	while (get_time() < time_start)
+	{
+		continue ;
+	}
+}
 
 void	*philo_routine(void *arg)
 {
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
+	//wait_all_philos(philo->table);
 	pthread_mutex_lock(&philo->table->m_last_meal);
 	philo->last_meal = philo->table->start_time;
 	pthread_mutex_unlock(&philo->table->m_last_meal);
+	wait_all_philos(philo->table->start_time);
 	if (philo->table->nbr_philos == 1)
 	{
 		ft_usleep(philo->table->time_to_die, philo->table);
@@ -43,7 +53,7 @@ int	start_simulation(t_table *table)
 	size_t	i;
 
 	i = 0;
-	table->start_time = get_time();
+	table->start_time = get_time() + (table->nbr_philos *20);
 	while (i < table->nbr_philos)
 	{
 		table->philos[i].last_meal = table->start_time;

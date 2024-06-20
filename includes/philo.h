@@ -6,7 +6,7 @@
 /*   By: kammi <kammi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:15:17 by kammi             #+#    #+#             */
-/*   Updated: 2024/06/12 17:45:31 by kammi            ###   ########.fr       */
+/*   Updated: 2024/06/20 12:42:33 by kammi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ typedef struct s_table
 	size_t				time_to_sleep;
 	size_t				nbr_must_eat;
 	int					dead;
+	//size_t				ready_count;
+	//pthread_mutex_t		m_ready;
 }						t_table;
 
 typedef struct s_philo
@@ -107,6 +109,7 @@ int		check_death(t_philo *philo);
 
 /********************************UTILS************************************/
 
+void	wait_all_philos(size_t time_start);
 size_t	get_time(void);
 void	ft_usleep(size_t time, t_table *table);
 void	print_msg(t_philo *philo, int msg);

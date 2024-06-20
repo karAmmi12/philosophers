@@ -6,7 +6,7 @@
 /*   By: kammi <kammi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 16:19:42 by kammi             #+#    #+#             */
-/*   Updated: 2024/06/12 17:31:01 by kammi            ###   ########.fr       */
+/*   Updated: 2024/06/20 12:59:19 by kammi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ void	*death_monitor(void *arg)
 	t_table	*table;
 
 	table = (t_table *)arg;
+	wait_all_philos(table->start_time);
 	while (!death(table))
 	{
 		if (handle_end(table))

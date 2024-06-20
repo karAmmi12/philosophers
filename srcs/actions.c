@@ -6,7 +6,7 @@
 /*   By: kammi <kammi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 15:39:46 by kammi             #+#    #+#             */
-/*   Updated: 2024/06/12 17:26:22 by kammi            ###   ########.fr       */
+/*   Updated: 2024/06/20 12:49:10 by kammi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void	thinking(t_philo *philo)
 		time_to_think = 0;
 	else
 	{
+
 		time_to_think -= temp;
 		time_to_think /= 2;
 		if (time_to_think > 500)
@@ -92,3 +93,17 @@ void	thinking(t_philo *philo)
 	ft_usleep(time_to_think, philo->table);
 	return ;
 }
+
+// void	thinking(t_philo *philo)
+// {
+// 	size_t	time_to_think;
+
+// 	if (death(philo->table))
+// 		return ;
+// 	print_msg(philo, THINK);
+// 	if (philo->table->nbr_philos % 2 == 0)
+// 		return ;
+// 	else
+// 		time_to_think = 100;
+// 	ft_usleep(time_to_think, philo->table);
+// }
