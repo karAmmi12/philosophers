@@ -6,7 +6,7 @@
 /*   By: kammi <kammi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 15:39:46 by kammi             #+#    #+#             */
-/*   Updated: 2024/06/20 12:49:10 by kammi            ###   ########.fr       */
+/*   Updated: 2024/06/27 12:21:19 by kammi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ void	ft_usleep(size_t time, t_table *table)
 	{
 		if (death(table))
 			break ;
-		usleep(100);
+		// if (time - (get_time() - start) < 500)
+		// 	usleep(time - (get_time() - start));
+		// else
+		usleep(500);
 	}
 }
 
@@ -71,39 +74,15 @@ void	sleeping(t_philo *philo)
 void	thinking(t_philo *philo)
 {
 	size_t	time_to_think;
-	size_t	temp;
 
 	if (death(philo->table))
 		return ;
-	pthread_mutex_lock(&philo->table->m_last_meal);
-	time_to_think = (philo->table->time_to_die);
-	temp = ((get_time() - philo->last_meal) + philo->table->time_to_eat);
-	pthread_mutex_unlock(&philo->table->m_last_meal);
-	if (temp >= time_to_think)
-		time_to_think = 0;
-	else
-	{
-
-		time_to_think -= temp;
-		time_to_think /= 2;
-		if (time_to_think > 500)
-			time_to_think = 150;
-	}
 	print_msg(philo, THINK);
+	if (philo->table->nbr_philos % 2 == 0)
+		return ;
+	else if (philo->table->time_to_sleep > philo->table->time_to_eat)
+		return ;
+	else
+		time_to_think = 100;
 	ft_usleep(time_to_think, philo->table);
-	return ;
 }
-
-// void	thinking(t_philo *philo)
-// {
-// 	size_t	time_to_think;
-
-// 	if (death(philo->table))
-// 		return ;
-// 	print_msg(philo, THINK);
-// 	if (philo->table->nbr_philos % 2 == 0)
-// 		return ;
-// 	else
-// 		time_to_think = 100;
-// 	ft_usleep(time_to_think, philo->table);
-// }

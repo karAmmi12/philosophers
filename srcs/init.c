@@ -6,7 +6,7 @@
 /*   By: kammi <kammi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 13:58:03 by kammi             #+#    #+#             */
-/*   Updated: 2024/06/20 12:43:01 by kammi            ###   ########.fr       */
+/*   Updated: 2024/06/25 17:31:14 by kammi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ int	init_mutex(t_table *table)
 		return (1);
 	if (pthread_mutex_init(&table->m_last_meal, NULL))
 		return (1);
-	//if (pthread_mutex_init(&table->m_ready, NULL))
-		//return (1);
 	return (0);
 }
 

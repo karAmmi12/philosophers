@@ -6,7 +6,7 @@
 /*   By: kammi <kammi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:14:32 by kammi             #+#    #+#             */
-/*   Updated: 2024/06/18 16:44:03 by kammi            ###   ########.fr       */
+/*   Updated: 2024/06/27 14:18:39 by kammi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,38 @@ int	ft_atoi(const char *str)
 		nb = nb * 10 + (str[i] - '0');
 		i++;
 	}
+	if (nb > INT_MAX && sign == 1)
+		return (-1);
+
+	return (nb * sign);
+}
+/*******************************ft_atol**********************************/
+
+long	ft_atol(const char *str, int *err)
+{
+	int		i;
+	int		sign;
+	long	nb;
+
+	i = 0;
+	sign = 1;
+	nb = 0;
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
+		|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign = -sign;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		nb = nb * 10 + (str[i] - '0');
+		i++;
+	}
+	if (nb > INT_MAX && sign == 1)
+		*err = 1;
 	return (nb * sign);
 }
 

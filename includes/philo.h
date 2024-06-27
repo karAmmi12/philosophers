@@ -6,7 +6,7 @@
 /*   By: kammi <kammi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:15:17 by kammi             #+#    #+#             */
-/*   Updated: 2024/06/20 12:42:33 by kammi            ###   ########.fr       */
+/*   Updated: 2024/06/27 14:18:29 by kammi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ typedef struct s_table
 	size_t				time_to_sleep;
 	size_t				nbr_must_eat;
 	int					dead;
-	//size_t				ready_count;
-	//pthread_mutex_t		m_ready;
 }						t_table;
 
 typedef struct s_philo
@@ -82,6 +80,7 @@ int		ft_atoi(const char *str);
 int		ft_isdigit(int c);
 size_t	ft_strlen(const char *s);
 void	ft_putstr_fd(char *s, int fd);
+long	ft_atol(const char *str, int *err);
 
 /*******************************INIT************************************/
 int		init_table(t_table *table);
